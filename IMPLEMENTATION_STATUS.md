@@ -10,12 +10,13 @@ Updated: 2026-10-15.
 | GP-004 | done | Copier tree, declarative validation, answers metadata, and equivalent output |
 | GP-005 | done | Three generated consumers pass shared lint, format, mypy, HTTP, logging, lockfile, and workflow checks |
 | GP-006 | done | Cruft and Copier updates preserve a local file; concurrent README edits surface a resolvable conflict |
-| GP-007 | done | Producer/consumer CI rendered; both tracked variants built and served health as non-root containers locally |
+| GP-007 | done | Producer/consumer CI rendered; both tracked variants built and served health as non-root containers locally and in GitHub Actions |
 | GP-008 | done | Public README, quickstart, update guide, comparison, and ADRs |
 | GP-009 | done | Full suite replayed from temporary Git repositories and generated consumers: 36 tests passed |
 
-No GitHub workflow is reported as successful until the repository is published and GitHub Actions
-has run. Local Docker and generated-consumer results are reported only after their commands finish.
+GitHub Actions completed successfully on the public repository in
+[run 38761189061](https://github.com/hkypro/golden-path-python-api/actions/runs/38761189061).
+Local Docker and generated-consumer results are reported only after their commands finish.
 
 ## Local validation evidence
 
@@ -38,5 +39,5 @@ uv run pytest -q
 
 Final result: `36 passed`. The suite generated all three entry points, bootstrapped independent
 consumer environments, exercised both tracked update paths, and built and started the Cruft and
-Copier consumer images. GitHub Actions remains configured but unverified remotely because nothing
-has been pushed.
+Copier consumer images. GitHub Actions independently repeated the producer, generated-consumer,
+and container checks successfully.
