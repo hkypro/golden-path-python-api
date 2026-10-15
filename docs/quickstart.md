@@ -1,7 +1,7 @@
 # Quickstart
 
 The repository exposes three entry points for one generated API contract. Use a released Git tag in
-real projects. Replace `YOUR_GITHUB_OWNER` until the public repository has a confirmed owner.
+real projects. The public repository is owned by `hkypro`.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ Cruft adds update provenance to the Cookiecutter generation:
 
 ```bash
 uvx --from cruft==2.16.0 cruft create \
-  https://github.com/YOUR_GITHUB_OWNER/python-api-golden-path.git \
+  https://github.com/hkypro/golden-path-python-api.git \
   --directory templates/cookiecutter/python-api \
   --checkout v0.1.0
 ```
@@ -28,7 +28,7 @@ uvx --from cruft==2.16.0 cruft create \
 ```bash
 uvx copier==9.19.1 copy \
   --vcs-ref v0.1.0 \
-  https://github.com/YOUR_GITHUB_OWNER/python-api-golden-path.git demo-api
+  https://github.com/hkypro/golden-path-python-api.git demo-api
 ```
 
 Cookiecutter 2.7.1 can use the same Cookiecutter subdirectory directly, but that entry point does

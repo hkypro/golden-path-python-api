@@ -1,5 +1,5 @@
 [project]
-name = "python-api-golden-path"
+name = "golden-path-python-api"
 version = "0.1.0"
 description = "Test harness for two maintainable Python API project templates"
 readme = "README.md"

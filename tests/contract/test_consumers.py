@@ -113,8 +113,8 @@ def test_generated_container_runs_as_non_root_and_serves_health(
 ) -> None:
     project = consumer_projects[engine]
     suffix = uuid.uuid4().hex[:10]
-    image = f"python-api-golden-path-{engine}:{suffix}"
-    container = f"python-api-golden-path-{engine}-{suffix}"
+    image = f"golden-path-python-api-{engine}:{suffix}"
+    container = f"golden-path-python-api-{engine}-{suffix}"
     port = _free_port()
 
     build = run(["docker", "build", "--tag", image, "."], cwd=project, check=False)

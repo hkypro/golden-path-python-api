@@ -1,4 +1,4 @@
-# Python API Golden Path
+# Golden Path Python API
 
 Two maintainable project-template implementations for the same production-minded FastAPI
 contract. The repository compares **Cookiecutter with Cruft** and **Copier** through generated
@@ -24,8 +24,9 @@ Install [uv](https://docs.astral.sh/uv/), then choose one entry point.
 
 ```bash
 uvx --from cruft==2.16.0 cruft create \
-  https://github.com/YOUR_GITHUB_OWNER/python-api-golden-path.git \
-  --directory templates/cookiecutter/python-api
+  https://github.com/hkypro/golden-path-python-api.git \
+  --directory templates/cookiecutter/python-api \
+  --checkout v0.1.0
 cd demo-api
 uv sync
 ```
@@ -34,15 +35,17 @@ Use Cookiecutter directly when update provenance is not required:
 
 ```bash
 uvx cookiecutter==2.7.1 \
-  https://github.com/YOUR_GITHUB_OWNER/python-api-golden-path.git \
-  --directory templates/cookiecutter/python-api
+  https://github.com/hkypro/golden-path-python-api.git \
+  --directory templates/cookiecutter/python-api \
+  --checkout v0.1.0
 ```
 
 ### Copier
 
 ```bash
 uvx copier==9.19.1 copy \
-  https://github.com/YOUR_GITHUB_OWNER/python-api-golden-path.git demo-api
+  --vcs-ref v0.1.0 \
+  https://github.com/hkypro/golden-path-python-api.git demo-api
 cd demo-api
 uv sync
 ```

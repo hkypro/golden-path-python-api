@@ -489,7 +489,7 @@ wheels = [
 ]
 
 [[package]]
-name = "python-api-golden-path"
+name = "golden-path-python-api"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
