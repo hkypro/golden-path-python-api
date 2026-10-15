@@ -1,0 +1,6 @@
+{
+  "project_slug": "demo-api",
+  "__package_name": "{{ cookiecutter.project_slug | replace('-', '_') }}",
+  "project_description": "A small Python API",
+  "author_name": "Project contributors"
+}

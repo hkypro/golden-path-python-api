@@ -1,0 +1,9 @@
+services:
+  api:
+    build: .
+    environment:
+      APP_NAME: {{ cookiecutter.project_slug | jsonify }}
+      LOG_LEVEL: INFO
+    ports:
+      - "127.0.0.1:${API_PORT:-8000}:8000"
+    init: true

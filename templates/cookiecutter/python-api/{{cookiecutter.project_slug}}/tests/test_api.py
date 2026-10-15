@@ -1,0 +1,31 @@
+from __future__ import annotations
+
+from fastapi.testclient import TestClient
+
+from {{ cookiecutter.__package_name }}.config import Settings
+from {{ cookiecutter.__package_name }}.main import create_app
+
+
+def test_health_and_example_routes() -> None:
+    app = create_app(Settings(app_name="test-api"))
+
+    with TestClient(app) as client:
+        assert client.get("/health/live").json() == {"status": "ok"}
+        assert client.get("/health/ready").json() == {"status": "ready"}
+        assert client.get("/api/v1/hello").json() == {"message": "Hello, world!"}
+        assert client.get("/api/v1/hello", params={"name": "Alice"}).json() == {
+            "message": "Hello, Alice!"
+        }
+
+
+def test_hello_validation_and_openapi() -> None:
+    app = create_app(Settings())
+
+    with TestClient(app) as client:
+        assert client.get("/api/v1/hello", params={"name": ""}).status_code == 422
+        assert client.get("/api/v1/hello", params={"name": "x" * 81}).status_code == 422
+        schema = client.get("/openapi.json").json()
+
+    assert "/health/live" in schema["paths"]
+    assert "/health/ready" in schema["paths"]
+    assert "/api/v1/hello" in schema["paths"]

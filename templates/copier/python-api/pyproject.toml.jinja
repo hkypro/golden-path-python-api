@@ -1,0 +1,44 @@
+[project]
+name = {{ project_slug | to_json }}
+version = "0.1.0"
+description = {{ project_description | to_json }}
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+license = "MIT"
+authors = [{ name = {{ author_name | to_json }} }]
+dependencies = [
+  "fastapi>=0.119,<1",
+  "pydantic-settings>=2.11,<3",
+  "uvicorn>=0.37,<1",
+]
+
+[dependency-groups]
+dev = [
+  "httpx>=0.28,<1",
+  "mypy>=1.18,<2",
+  "pytest>=9.0,<10",
+  "ruff>=0.14,<1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/{{ package_name }}"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+files = ["src", "tests"]
+plugins = ["pydantic.mypy"]

@@ -1,0 +1,24 @@
+"""Environment-backed application settings."""
+
+from __future__ import annotations
+
+from typing import Literal
+
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+LogLevel = Literal["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG"]
+
+
+class Settings(BaseSettings):
+    """Validated settings; process environment overrides the optional local file."""
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+        case_sensitive=False,
+    )
+
+    app_name: str = Field(default={{ cookiecutter.project_slug | jsonify }}, min_length=1)
+    log_level: LogLevel = "INFO"
